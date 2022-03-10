@@ -2,7 +2,7 @@ import AUTHENTICATION_ACTIONS from "./authentication-actions"
 
 const AUTHENTICATION_STORE = {
   state: () => ({
-    userInfo: []
+    userInfo: {}
   }),
 
   actions: {
