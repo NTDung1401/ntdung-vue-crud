@@ -53,7 +53,6 @@ export default{
   },
 
   methods: {
-
     async submitRegister() {
       const registerFormData = new FormData()
       registerFormData.append("name", this.userInfo.name)
@@ -64,13 +63,12 @@ export default{
       await axios.post(AUTH_API.registerApi, registerFormData)
       .then(res => {
         if(res) {
-          if(res.data) {
-            // this.login(res.data.user)
-            console.log(res.data)
+          if(res.status && res.status === 201) {
+            console.log("Register Success!")
+
+            this.$router.push('/login')
           }
         }
-
-        this.$router.push('/login')
       })
       .catch(err => {
         console.log(err)

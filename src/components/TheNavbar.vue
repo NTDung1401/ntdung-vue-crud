@@ -17,11 +17,11 @@
         </ul>
         
         <div class="d-flex">
-          <button class="btn btn-dark" v-if="userInfo.email">{{ userInfo.name }}</button>
+          <button class="btn btn-dark mr-7" v-if="userInfo.email">{{ userInfo.name }}</button>
 
           <button class="btn btn-outline-dark ml-3" v-if="userInfo.email" v-on:click="logout">Log out</button>
  
-          <router-link v-if="!userInfo.email"  class="btn btn-outline-dark" to="/login">Login</router-link>
+          <router-link v-if="!userInfo.email"  class="btn btn-outline-dark mr-7" to="/login">Login</router-link>
 
           <router-link v-if="!userInfo.email" class="btn btn-dark" to="/register">Register</router-link>
         </div>
@@ -59,13 +59,14 @@ export default {
           Authorization: `Bearer ${access_token}`
         }
 
-        await axios.post(AUTH_API.logoutApi, {}, {
+        await axios.post(AUTH_API.logoutApi, null, {
           headers: headers
         })
         .then(res => {
           if(res) {
             if(res.status === 200) {
               this.login({})
+              Cookies.remove('access_token')
 
               this.$router.push('/login')
             }
@@ -84,5 +85,9 @@ export default {
 <style scoped>
 .navbar {
   background-color: #42b983;
+}
+
+.mr-7 {
+  margin-right: 7px;
 }
 </style>

@@ -12,5 +12,6 @@ export const getUserProfileApi = BASE_URL + "/auth/user-profile"
 export const AUTH_API = {
   loginApi,
   logoutApi,
+  registerApi,
   getUserProfileApi
 }
